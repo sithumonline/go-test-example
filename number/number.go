@@ -1,10 +1,27 @@
 package number
 
 type Number struct {
-	GetHundred func() int
+	number int
+	meth   NumberX
 }
 
-func (n *Number) ThousandHundredNumber() int {
-	q := 1000 + n.GetHundred()
-	return q
+type NumberX interface {
+	SetRandomNumber(int64)
+	GetRandomNumber() int
+}
+
+func NewNumber(meth NumberX) *Number {
+	return &Number{meth: meth}
+}
+
+func (n *Number) SetNumber(h int64) {
+	n.meth.SetRandomNumber(h)
+}
+
+func (n *Number) LoadNumber() {
+	n.number = n.meth.GetRandomNumber()
+}
+
+func (n *Number) GetNumber() int {
+	return n.number
 }

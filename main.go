@@ -10,13 +10,13 @@ import (
 )
 
 func main() {
-	j := sum.Sum{
-		GetThousandHundred: number.Number{
-			GetHundred: (&random.Random{
-				Source: time.Now().UnixNano(),
-			}).HundredNumber,
-		}.GetHundred,
-	}
+	ran := random.NewRandom()
 
-	fmt.Println(j.Sum(512))
+	num := number.NewNumber(ran)
+	num.SetNumber(time.Now().UnixNano())
+	num.LoadNumber()
+
+	sum := sum.NewSum(num)
+
+	fmt.Println(sum.GetSum(512))
 }
