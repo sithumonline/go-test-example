@@ -6,37 +6,51 @@ import (
 	"github.com/sithumonline/go-test-example/number"
 )
 
-func MockHundredNumber() int {
+type Test struct {
+	meth TestX
+}
+
+type TestX interface {
+	GetNumber() int
+}
+
+func (s *Test) GetNumber() int {
 	n := 184
 	return n
 }
 
-func MockThousandHundredNumber() int {
+type Tos struct {
+	meth TosX
+}
+
+type TosX interface {
+	SetRandomNumber(int64)
+	GetRandomNumber() int
+}
+
+func (s *Tos) SetRandomNumber(f int64) {}
+
+func (s *Tos) GetRandomNumber() int {
 	n := 2184
 	return n
 }
 
-func TestSum(t *testing.T) {
-	y := Sum{
-		GetThousandHundred: number.Number{
-			GetHundred: MockHundredNumber,
-		}.GetHundred,
-	}
+func TestGetSum(t *testing.T) {
+	y := NewSum(&Test{})
 
-	m := y.Sum(100)
-
+	m := y.GetSum(100)
 	if m != 284 {
 		t.Error("Expected: 284, got:", m)
 	}
 
 	t.Logf("Got MockHundredNumber : %d", m)
 
-	z := Sum{
-		GetThousandHundred: MockThousandHundredNumber,
-	}
+	n := number.NewNumber(&Tos{})
+	n.LoadNumber()
 
-	u := z.Sum(200)
+	z := NewSum(n)
 
+	u := z.GetSum(200)
 	if u != 2384 {
 		t.Error("Expected: 2284, got:", u)
 	}
