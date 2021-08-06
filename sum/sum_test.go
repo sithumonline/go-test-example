@@ -32,18 +32,18 @@ func (m *MockRandom) GetRandomNumber() int { return 2184 }
 func TestGetSum(t *testing.T) {
 	sum := NewSum(&MockNumber{}).GetSum(100)
 	if sum != 284 {
-		t.Error("Expected: 284, got:", sum)
+		t.Error("Expected: 284, got : ", sum)
 	}
 
-	t.Logf("Got MockHundredNumber : %d", sum)
+	t.Logf("MockNumber got : %d", sum)
 
 	num := number.NewNumber(&MockRandom{})
 	num.LoadNumber()
 
 	sum = NewSum(num).GetSum(200)
 	if sum != 2384 {
-		t.Error("Expected: 2284, got:", sum)
+		t.Error("Expected: 2284, got : ", sum)
 	}
 
-	t.Logf("Got MockThousandHundredNumber : %d", sum)
+	t.Logf("MockRandom got : %d", sum)
 }
