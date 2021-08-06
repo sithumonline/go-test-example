@@ -10,9 +10,7 @@ import (
 )
 
 func main() {
-	ran := random.NewRandom()
-
-	num := number.NewNumber(ran)
+	num := number.NewNumber(random.NewRandom())
 	num.SetNumber(time.Now().UnixNano())
 	num.LoadNumber()
 

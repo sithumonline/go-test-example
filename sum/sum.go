@@ -1,18 +1,17 @@
 package sum
 
 type Sum struct {
-	meth SumX
+	method SumMethod
 }
 
-type SumX interface {
+type SumMethod interface {
 	GetNumber() int
 }
 
-func NewSum(meth SumX) *Sum {
-	return &Sum{meth}
+func NewSum(method SumMethod) *Sum {
+	return &Sum{method}
 }
 
-func (s *Sum) GetSum(v int) int {
-	n := v + s.meth.GetNumber()
-	return n
+func (s *Sum) GetSum(n int) int {
+	return n + s.method.GetNumber()
 }

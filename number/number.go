@@ -2,24 +2,24 @@ package number
 
 type Number struct {
 	number int
-	meth   NumberX
+	method   NumberMethod
 }
 
-type NumberX interface {
+type NumberMethod interface {
 	SetRandomNumber(int64)
 	GetRandomNumber() int
 }
 
-func NewNumber(meth NumberX) *Number {
-	return &Number{meth: meth}
+func NewNumber(method NumberMethod) *Number {
+	return &Number{method: method}
 }
 
 func (n *Number) SetNumber(h int64) {
-	n.meth.SetRandomNumber(h)
+	n.method.SetRandomNumber(h)
 }
 
 func (n *Number) LoadNumber() {
-	n.number = n.meth.GetRandomNumber()
+	n.number = n.method.GetRandomNumber()
 }
 
 func (n *Number) GetNumber() int {
