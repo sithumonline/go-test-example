@@ -1,17 +1,17 @@
 # go-test-example
 
-________________________________________
-|        _________________________       |
-|        |    _____________      |       |
-|        |    |           |      |       |
-|        |    |   Random  |      |       |
-|        |    |___________|      |       |
-|        |                       |       |
-|        |         Number        |       |
-|        |_______________________|       |
-|                                        |
-|                   Sum                  |
-|________________________________________|
+________________________________________   <br/>
+|        _________________________       | <br/>
+|        |    _____________      |       | <br/>
+|        |    |           |      |       | <br/>
+|        |    |   Random  |      |       | <br/>
+|        |    |___________|      |       | <br/>
+|        |                       |       | <br/>
+|        |         Number        |       | <br/>
+|        |_______________________|       | <br/>
+|                                        | <br/>
+|                   Sum                  | <br/>
+|________________________________________| <br/>
 
 Dependency injection aka [inversion of control](https://en.wikipedia.org/wiki/Inversion_of_control) is probably better known as a solution to the [dependency inversion principle](https://en.wikipedia.org/wiki/Dependency_inversion_principle) which is the letter “D” in SOLID. Both principles touch on writing well-architected, modularized programs.
 
