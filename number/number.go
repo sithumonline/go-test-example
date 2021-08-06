@@ -2,7 +2,7 @@ package number
 
 type Number struct {
 	number int
-	method   NumberMethod
+	method NumberMethod
 }
 
 type NumberMethod interface {
