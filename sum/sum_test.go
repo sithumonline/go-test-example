@@ -6,54 +6,44 @@ import (
 	"github.com/sithumonline/go-test-example/number"
 )
 
-type Test struct {
-	meth TestX
+type MockNumber struct {
+	method MockNumberMethod
 }
 
-type TestX interface {
+type MockNumberMethod interface {
 	GetNumber() int
 }
 
-func (s *Test) GetNumber() int {
-	n := 184
-	return n
+func (m *MockNumber) GetNumber() int { return 184 }
+
+type MockRandom struct {
+	method MockRandomMethod
 }
 
-type Tos struct {
-	meth TosX
-}
-
-type TosX interface {
+type MockRandomMethod interface {
 	SetRandomNumber(int64)
 	GetRandomNumber() int
 }
 
-func (s *Tos) SetRandomNumber(f int64) {}
+func (m *MockRandom) SetRandomNumber(f int64) {}
 
-func (s *Tos) GetRandomNumber() int {
-	n := 2184
-	return n
-}
+func (m *MockRandom) GetRandomNumber() int { return 2184 }
 
 func TestGetSum(t *testing.T) {
-	y := NewSum(&Test{})
-
-	m := y.GetSum(100)
-	if m != 284 {
-		t.Error("Expected: 284, got:", m)
+	sum := NewSum(&MockNumber{}).GetSum(100)
+	if sum != 284 {
+		t.Error("Expected: 284, got:", sum)
 	}
 
-	t.Logf("Got MockHundredNumber : %d", m)
+	t.Logf("Got MockHundredNumber : %d", sum)
 
-	n := number.NewNumber(&Tos{})
-	n.LoadNumber()
+	num := number.NewNumber(&MockRandom{})
+	num.LoadNumber()
 
-	z := NewSum(n)
-
-	u := z.GetSum(200)
-	if u != 2384 {
-		t.Error("Expected: 2284, got:", u)
+	sum = NewSum(num).GetSum(200)
+	if sum != 2384 {
+		t.Error("Expected: 2284, got:", sum)
 	}
 
-	t.Logf("Got MockThousandHundredNumber : %d", u)
+	t.Logf("Got MockThousandHundredNumber : %d", sum)
 }
